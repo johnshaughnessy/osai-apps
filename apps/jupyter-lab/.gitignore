@@ -1,4 +1,5 @@
 code/*
 !code/.gitkeep
+!code/run-jupyter-lab.sh
 huggingface-cache/*
 !huggingface-cache/.gitkeep

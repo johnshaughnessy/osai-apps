@@ -6,7 +6,9 @@ sleep 1
 docker network create osai-bridge || true
 
 echo "Running nginx-proxy."
-docker run --rm -d \
+docker run \
+    --rm \
+    -it \
     --name nginx-proxy \
     --network osai-bridge \
     -v ./conf.d:/etc/nginx/conf.d \

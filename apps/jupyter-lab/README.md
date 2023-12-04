@@ -1,20 +1,10 @@
-# `jupyter-lab-base`
+# `jupyter-lab`
 
-This directory contains dockerfiles for running various jupyter notebooks in jupyter lab. Typically, package management is done with python virtual environments, or sometimes it's not done at all, and the user just hopes their scripts don't get deprecated by newer versions of python libraries. Alternatively, people run their code on colab so that their notebooks don't have conflicting dependencies.
+This directory contains scripts for running in jupyter lab.
 
-Instead of this, we'll try running the notebooks in containers with jupyter lab installed. Even though jupyter-lab is plenty capable of running many jupyter notebooks from many projects, it still requires the user manage the underlying dependencies. Since these dependencies are not just restricted to python dependencies, (e.g. A notebook might install an apt package by invoking a bash command), I to try managing this in docker containers instead.
+# Usage
 
-# Build and run the `jupyter-lab-base` image
-
-The base image just adds `jupyter-lab-base` (and `git`, for convenience) to our `cuda-pip-torch` image.
-
-The assumption is that we'll clone notebooks into `./code/` and `.gitignore` them.
-
-1. Build `jupyter-lab-base`:
-
-```sh
-docker build -f Dockerfile.jupyter-lab-base -t jupyter-lab-base .
-```
+1. Run `./init.sh` to build the base image for running `jupyter-lab`.
 
 2. Run jupyter lab in the container with:
 

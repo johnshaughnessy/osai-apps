@@ -1,5 +1,6 @@
 docker run \
     --rm \
+    -d \
     --gpus all \
     -it \
     --name comfyui \
