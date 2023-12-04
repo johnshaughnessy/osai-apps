@@ -1,3 +1,10 @@
+echo "Stopping comfyui if it is running."
+docker stop comfyui || true
+sleep 1
+
+docker network create osai-bridge || true
+
+echo "Running comfyui."
 docker run \
     --rm \
     -d \
