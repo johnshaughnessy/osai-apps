@@ -8,6 +8,7 @@
 declare -A service_ports
 service_ports["comfyui"]="8188"
 service_ports["jupyter-lab"]="7002"
+service_ports["stable-diffusion-webui"]="7860"
 # Add other services and their ports here
 
 # Iterate over the array
