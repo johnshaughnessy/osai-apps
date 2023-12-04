@@ -3,6 +3,7 @@ docker run \
     --gpus all \
     -it \
     --name comfyui \
+    --network osai-bridge \
     --publish 8188:8188 \
     --mount type=bind,source="$(pwd)"/ComfyUI,target=/ComfyUI \
     comfyui \
