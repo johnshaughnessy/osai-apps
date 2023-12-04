@@ -1,11 +1,17 @@
-docker build -f Dockerfile -t stable-diffusion-webui .
+echo "Building the stable-diffusion-webui image."
+docker build \
+    --build-arg USER=$USER \
+    -f Dockerfile.stable-diffusion-webui \
+    -t stable-diffusion-webui \
+    .
+
+echo "Running additional container initialization steps."
 docker run \
     --rm \
-    --gpus all \
-    -t \
+    -it \
     --name stable-diffusion-webui \
-    --publish 7860:7860 \
-    --mount type=bind,source="$(pwd)"/code,target=/code \
-    --user "john":"john" \
-    stable-diffusion-webui \
-    "/container_init.sh"
+    --mount type=bind,source="$(pwd)"/app,target=/app \
+    -w /app \
+    -e HOST_USER=$USER \
+    --entrypoint /entrypoint.sh \
+    stable-diffusion-webui

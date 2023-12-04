@@ -1,8 +1,13 @@
-# Configuration for running `AUTOMATIC1111/stable-diffusion-webui`
+# `AUTOMATIC1111/stable-diffusion-webui`
 
 This directory contains a docker image and setup instructions for running https://github.com/AUTOMATIC1111/stable-diffusion-webui inside of a docker container.
 
-# Motivation
+## Usage
+
+- Run `init.sh`.
+- Run `run.sh`.
+
+## Motivation
 
 There are already a few other [docker-based setups linked in the wiki](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Containers).
 
@@ -13,11 +18,3 @@ The base repo has a good setup script that downloads and installs the project. I
 - I make sure the [dependencies](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Dependencies) are met by the image and
 
 - I follow [the instructions](https://github.com/AUTOMATIC1111/stable-diffusion-webui#automatic-installation-on-linux).
-
-I don't want a copy of the repo inside of this one, so I will be using .gitignore to ignore all the code.
-
-# Instructions
-
-For first-time setup, run `init.sh`.
-
-After that, run `run.sh`.

@@ -1,0 +1,17 @@
+FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y python3 python3-pip
+RUN pip3 install --upgrade pip
+RUN pip install torch torchvision torchaudio
+
+RUN apt-get install -y wget git python3 python3-venv libgl1 libglib2.0-0
+
+ARG USER
+RUN useradd -ms /bin/bash ${USER}
+
+COPY container_init.sh /container_init.sh
+RUN chown ${USER}:${USER} /container_init.sh && chmod +x /container_init.sh
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
