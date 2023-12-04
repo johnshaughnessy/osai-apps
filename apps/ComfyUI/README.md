@@ -1,6 +1,7 @@
-# Setup for ComfyUI
+# ComfyUI
 
-Run [ComfyUI](https://github.com/comfyanonymous/ComfyUI) in a docker container.
+Setup for running [ComfyUI](https://github.com/comfyanonymous/ComfyUI) in a docker container.
 
 Run `./init.sh`.
+
 Run `./run.sh`.
