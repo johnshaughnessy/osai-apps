@@ -1,3 +1,3 @@
-FROM jupyter-lab-base
+FROM jupyter-lab-base:latest
 COPY code/diffusion-nbs/requirements.txt requirements.txt
 RUN pip install -r requirements.txt

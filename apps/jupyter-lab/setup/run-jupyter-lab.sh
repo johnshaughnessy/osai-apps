@@ -16,7 +16,7 @@ cat <<EOF >$HOME/.jupyter/jupyter_server_config.json
 }
 EOF
 # Start JupyterLab
-jupyter lab \
+PATH=$PATH:/usr/bin/node jupyter lab \
     --config=$HOME/.jupyter/jupyter_server_config.json \
     --no-browser \
     --port $2 \

@@ -32,7 +32,7 @@ Let's create three files:
 Here is our `Dockerfile.fastai-diffusion-nbs`:
 
 ```dockerfile
-FROM jupyter-lab-base
+FROM jupyter-lab-base:latest
 COPY code/diffusion-nbs/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 ```
