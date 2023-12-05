@@ -11,7 +11,7 @@ This repository contains scripts to help run and develop AI applications inside 
 | WIP    | [`fastbook`](./apps/fastbook/README.md)                                | The fastai book for intro to deep learning            |
 | Great  | [`Jupyter Lab`](./apps/jupyter-lab/README.md)                          | Jupyter Lab                                           |
 | WIP    | [`Memory Cache`](./apps/memory-cache/README.md)                        | privateGPT for the Memory Cache browser extension     |
-| Great  | [`nginx`](./apps/nginx/README.md)                                      | Reverse proxy for running osai-apps on subdomains.    |
+| Great  | [`nginx`](./apps/nginx/README.md)                                      | Reverse proxy for running osai-apps on subdomains     |
 | Great  | [`Stable Diffusion WebUI`](./apps/stable-diffusion-webui/README.md)    | A browser interface for Stable Diffusion              |
 | WIP    | [`x11vnc`](./apps/x11vnc/README.md)                                    | Remotely control graphical programs                   |
 

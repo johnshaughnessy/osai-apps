@@ -25,7 +25,7 @@ RUN echo "john ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/john
 ENV DISPLAY=:0
 
 # Expose the VNC port
-EXPOSE 5900
+EXPOSE 3389
 
 # Add Google Chrome to the repositories
 RUN apt-get update && apt-get install -y wget gnupg
@@ -43,4 +43,4 @@ RUN mkdir ~/.vnc
 
 CMD xvfb-run --server-args='-screen 0, 1920x1080x24' /bin/bash -c \
     "fluxbox & \
-    x11vnc -forever -create"
+    x11vnc -rfbport 3389 -forever -create"
