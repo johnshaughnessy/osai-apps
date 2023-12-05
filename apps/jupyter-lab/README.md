@@ -15,7 +15,7 @@ The base image sets up just enough to run Jupyter Lab. In order to run the vario
 2. Create an environment with the dependencies installed.
 3. Run Jupyter Lab and load the notebook.
 
-See the [`fastai-diffusion-nbs/README.md`](../apps/fastai-diffusion-nbs/README.md) for a complete walkthrough of these steps.
+See [`fastai-diffusion-nbs/README.md`](../fastai-diffusion-nbs/README.md) for a complete walkthrough of these steps.
 
 ### Determining dependencies
 
