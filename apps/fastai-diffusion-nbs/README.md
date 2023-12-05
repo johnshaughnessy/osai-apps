@@ -136,7 +136,7 @@ The [`apps/nginx`](../apps/nginx/README.md) service is a convenient way to expos
         }
 ```
 
-And we add a service to the list in `mock.sh`:
+And we add a service to the list in [`mock.sh`](../apps/nginx/mock.sh):
 
 ```sh
 service_ports["fastai-diffusion-nbs"]="7003"
