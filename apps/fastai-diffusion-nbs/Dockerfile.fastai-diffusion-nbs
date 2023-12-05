@@ -1,4 +1,3 @@
 FROM jupyter-lab-base
-
 COPY code/diffusion-nbs/requirements.txt requirements.txt
 RUN pip install -r requirements.txt

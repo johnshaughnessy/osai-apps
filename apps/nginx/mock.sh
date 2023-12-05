@@ -4,10 +4,10 @@
 # So, if any of the services are not running, we set up a mock service instead,
 # running a simple http server.
 
-# Declare an associative array
 declare -A service_ports
 service_ports["comfyui"]="8188"
 service_ports["jupyter-lab"]="7002"
+service_ports["fastai-diffusion-nbs"]="7003"
 service_ports["stable-diffusion-webui"]="7860"
 # Add other services and their ports here
 

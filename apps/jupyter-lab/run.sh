@@ -18,5 +18,6 @@ docker run \
     --network osai-bridge \
     --publish 7002:7002 \
     --mount type=bind,source="$(pwd)"/code,target=/home/"$USER"/code \
+    --mount type=bind,source="$(pwd)"/setup,target=/setup \
     jupyter-lab-base \
-    /home/john/code/run-jupyter-lab.sh "$JUPYTER_PASSWORD"
+    /setup/run-jupyter-lab.sh "$JUPYTER_PASSWORD" 7002

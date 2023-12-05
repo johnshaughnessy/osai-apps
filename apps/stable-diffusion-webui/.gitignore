@@ -1,4 +1,3 @@
 app/stable-diffusion-webui
 app/webui.sh
 app/print_done.py
-!./app/container_init.sh

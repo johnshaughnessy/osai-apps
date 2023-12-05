@@ -1,91 +1,29 @@
 # `jupyter-lab`
 
-This directory contains scripts for running in jupyter lab.
+This directory contains scripts for running [Jupyter Lab](https://jupyter.org/) in a docker container.
 
-# Usage
+## Basic Usage
 
-1. Run `./init.sh` to build the base image for running `jupyter-lab`.
+1. Run `./init.sh` to build the base image.
+2. Run `./run.sh`.
 
-2. Run jupyter lab in the container with:
+## Running notebooks
 
-```sh
-docker run \
-    --rm \
-    --gpus all \
-    -it \
-    --name jupyter-lab-base \
-    --publish   7002:7002 \
-    --mount type=bind,source="$(pwd)"/code,target=/home/john/code \
-    --user "john":"john" \
-    jupyter-lab-base \
-    /home/john/code/run-jupyter-lab.sh
-```
+The base image sets up just enough to run Jupyter Lab. In order to run the various notebooks you come across online, you will need to:
 
-3. Access it via http://192.168.2.234:7002/ (replacing the ip address with the target node's IP).
+1. Determine the notebooks' dependencies.
+2. Create an environment with the dependencies installed.
+3. Run Jupyter Lab and load the notebook.
 
-# Running `fastai/diffusion-nbs`
+See the [`fastai-diffusion-nbs/README.md`](../apps/fastai-diffusion-nbs/README.md) for a complete walkthrough of these steps.
 
-1. Build `jupyter-lab-base` (following the instructions above).
-2. Clone the git repo.
+### Determining dependencies
 
-```sh
-pushd code
-git clone https://github.com/fastai/diffusion-nbs
-popd
-```
+Each jupyter notebook has its own python dependencies or system dependencies.
 
-3. Build `jupyter-lab-fastai-diffusion-nbs`
+- Python dependencies are often specified in a [requirements file](https://pip.pypa.io/en/stable/reference/requirements-file-format/) (`requirements.txt`).
+- System dependencies may be specified in project `README` files or other documentation. Alternatively, there might be scripts or lines in the notebook that say things like, `apt install <package>`.
 
-```sh
-docker build -f Dockerfile.fastai-diffusion-nbs -t jupyter-lab-fastai-diffusion-nbs .
-```
+Not all notebooks specify their dependencies explicitly, and documentation can be out of date.
 
-4.  Run it:
-
-```sh
-docker run \
-     --rm \
-     --gpus all \
-     -it \
-     --name jupyter-lab-fastai-diffusion-nbs \
-     --publish 7002:7002 \
-     --mount type=bind,source="$(pwd)"/code,target=/home/john/code \
-     --mount type=bind,source="$(pwd)"/huggingface-cache,target=/home/john/.cache/huggingface \
-     --user "john":"john" \
-     jupyter-lab-fastai-diffusion-nbs \
-     /home/john/code/run-jupyter-lab.sh
-```
-
-5. Access it via http://192.168.2.234:7002/ (replacing the ip address with the target node's IP).
-
-## Note to self [John]
-
-In the previous set up, I ran jupyter lab as a systemd service. This was not in a docker containter. It was just configured to use a particular virtual env (with mamba).
-
-```sh
-/home/john/mambaforge/envs/scratch/bin/jupyter lab --config=/home/john/.jupyter/jupyter_lab_config.py --NotebookApp.allow_origin='https://deeplearning8.com' --no-browser
-```
-
-# Running `huggingface/notebooks`
-
-There are a bunch of `huggingface/notebooks`. The easiest way to run them is to use `jupyter-lab-base` and then `pip install` whatever you need to run the particular notebook you're interested in. (When you stop running the container, you'll lose all the dependencies you installed, which is usually what you want.)
-
-One exception is large model files that take a long time to download. You'll want to keep those, which we can do by bind mounting huggingface cache directory:
-
-```sh
-docker run \
-    --rm \
-    --gpus all \
-    -it \
-    --name jupyter-lab-base \
-    --publish 7002:7002 \
-    --mount type=bind,source="$(pwd)"/code,target=/home/john/code \
-    --mount type=bind,source="$(pwd)"/huggingface-cache,target=/home/john/.cache/huggingface \
-    --user "john":"john" \
-    jupyter-lab-base \
-    /home/john/code/run-jupyter-lab.sh
-```
-
-# Mounting model files
-
-Large model files take a long time to download
+In general, you will need to troubleshoot dependencies like you would for any other program. The good news is that since we are working in containers, it is easy to undo or retrace steps if anything goes wrong.
