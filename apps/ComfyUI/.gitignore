@@ -1,2 +1,4 @@
 !ComfyUI/.gitkeep
 ComfyUI/
+!output/.gitkeep
+output/
