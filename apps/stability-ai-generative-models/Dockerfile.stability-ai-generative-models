@@ -1,0 +1,18 @@
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+RUN apt-get update && apt-get install -y python3 python3-pip git
+RUN pip3 install --upgrade pip
+
+WORKDIR /code
+RUN git clone https://github.com/Stability-AI/generative-models.git
+WORKDIR /code/generative-models
+RUN pip3 install -r requirements/pt2.txt
+RUN pip3 install .
+RUN pip3 install -e git+https://github.com/Stability-AI/datapipelines.git@main\#egg=sdata
+ENV PYTHONPATH=/code/generative-models
+
+RUN apt-get install -y libglib2.0-0 libgl1
+
+# SVD video
+RUN pip3 install huggingface_hub
+COPY download_svd.py download_svd.py
+COPY img2video.sh img2video.sh
