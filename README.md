@@ -14,6 +14,7 @@ This repository contains scripts to help run and develop AI applications inside 
 | Great  | [`nginx`](./apps/nginx/README.md)                                      | Reverse proxy for running osai-apps on subdomains     |
 | Great  | [`Stable Diffusion WebUI`](./apps/stable-diffusion-webui/README.md)    | A browser interface for Stable Diffusion              |
 | WIP    | [`x11vnc`](./apps/x11vnc/README.md)                                    | Remotely control graphical programs                   |
+| WIP    | [`huggingface/diffusers`](./apps/huggingface-diffuser/README.md)       | Generate images, audio, and even 3D molecules         |
 
 ## Usage
 
