@@ -15,6 +15,9 @@ docker run \
   --name stable-diffusion-webui \
   --network osai-bridge \
   --publish 7860:7860 \
+  --mount type=bind,source="$HOME/.cache/huggingface/hub",target=/app/stable-diffusion-webui/models/Stable-diffusion \
+  --mount type=bind,source="$HOME/.cache/huggingface/hub",target=/app/stable-diffusion-webui/models/ControlNet \
+  --mount type=bind,source="$HOME/.cache/huggingface/hub",target=/app/stable-diffusion-webui/models/Lora \
   --mount type=bind,source="$(pwd)"/app,target=/app \
   --mount type=bind,source="$(pwd)"/webui-user.sh,target=/app/stable-diffusion-webui/webui-user.sh \
   -w /app \
