@@ -16,7 +16,8 @@ docker run \
   --network osai-bridge \
   --publish 7860:7860 \
   --mount type=bind,source="$(pwd)"/app,target=/app \
+  --mount type=bind,source="$(pwd)"/webui-user.sh,target=/app/stable-diffusion-webui/webui-user.sh \
   -w /app \
   --user $USER:$USER \
   stable-diffusion-webui \
-  ./webui.sh --listen
+  sleep infinity
