@@ -6,7 +6,11 @@ RUN pip install torch torchvision torchaudio
 
 RUN apt-get install -y wget git python3 python3-venv libgl1 libglib2.0-0
 
-RUN pip install tqdm accelerate
+RUN pip install accelerate
+# Apparently we need tqdm 4.45.0 for TemporalKit to work
+# https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/12155#issuecomment-1661859314
+# https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/12359
+RUN pip install tqdm==4.45.0
 
 ARG USER
 RUN useradd -ms /bin/bash ${USER}
