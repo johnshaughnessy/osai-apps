@@ -1,22 +1,27 @@
 # ffmpeg + nvidia + docker
 
-Followed the instructions in nvidia documentation:
-
-https://docs.nvidia.com/video-technologies/video-codec-sdk/12.0/ffmpeg-with-nvidia-gpu/index.html
-
-Inspired by https://github.com/linuxserver/docker-ffmpeg
+It turns out, there's no need to use this dockerfile. [`jrottenberg/ffmpeg`](https://github.com/jrottenberg/ffmpeg) is all you need.
 
 ```sh
 docker run --rm -it \
   --gpus=all \
   -v $(pwd):/config \
-  ffmpeg-nvidia \
-  ffmpeg \
-  -hwaccel nvdec \
+  jrottenberg/ffmpeg:4.1-nvidia \
+  -hwaccel cuvid \
+  -c:v h264_cuvid \
   -i /config/input.mkv \
+  -vf \
+  scale_npp=-1:720 \
   -c:v h264_nvenc \
-  -b:v 4M \
-  -vf scale=1280:720 \
-  -c:a copy \
+  -preset slow \
   /config/output.mkv
 ```
+
+--
+
+Previously, I was trying to build this myself following this documentation and the ffmpeg docs:
+
+- https://docs.nvidia.com/video-technologies/video-codec-sdk/12.0/ffmpeg-with-nvidia-gpu/index.html
+- https://github.com/linuxserver/docker-ffmpeg
+
+This was unnecessary.
